@@ -1,5 +1,5 @@
 import { Button, Flex, Image, Stack } from '@chakra-ui/react'
-import React, { useRef } from 'react'
+import { useRef } from 'react'
 
 type ImageUploadProps = {
     selectedFile?: string

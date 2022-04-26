@@ -1,7 +1,7 @@
 import { Button, Flex, Image, Text } from '@chakra-ui/react'
 import { User } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
 import { auth, firestore } from '../../../firebase/clientApp'
 

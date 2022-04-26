@@ -8,7 +8,7 @@ import {
     Icon,
     Text,
 } from '@chakra-ui/react'
-import React, { ReactEventHandler, useState } from 'react'
+import { ReactEventHandler, useState } from 'react'
 import { BiPoll } from 'react-icons/bi'
 import { BsLink45Deg, BsMic } from 'react-icons/bs'
 import { IoDocumentText, IoImageOutline } from 'react-icons/io5'
@@ -104,14 +104,13 @@ const NewPostForm: React.FC<NewPostFormProps> = ({ user }) => {
                     imageURL: downloadURL,
                 })
             }
+            // redirect the user back to the communityPage using the router
+            router.back()
         } catch (error: any) {
             console.log('handleCreatePost error', error.message)
             setError(true)
         }
         setLoading(false)
-
-        // redirect the user back to the communityPage using the router
-        // router.back()
     }
 
     const onSelectImage = (event: React.ChangeEvent<HTMLInputElement>) => {

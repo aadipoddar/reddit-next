@@ -11,7 +11,7 @@ import {
     Flex,
     Text,
 } from '@chakra-ui/react'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRecoilState } from 'recoil'
 import { authModalState } from '../../../atoms/authModalAtom'
