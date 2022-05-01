@@ -1,6 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore'
 import { GetServerSidePropsContext } from 'next'
-import { Community } from '../../../atoms/communitiesAtom'
+import React, { useEffect } from 'react'
+import { Community, communityState } from '../../../atoms/communitiesAtom'
 import { firestore } from '../../../firebase/clientApp'
 import safeJsonStringify from 'safe-json-stringify'
 import NotFound from '../../../components/Community/NotFound'
@@ -9,6 +10,8 @@ import PageContent from '../../../components/Layout/PageContent'
 import Head from 'next/head'
 import CreatePostLink from '../../../components/Community/CreatePostLink'
 import Posts from '../../../components/Posts/Posts'
+import { useSetRecoilState } from 'recoil'
+import About from '../../../components/Community/About'
 
 type CommunityPageProps = {
     communityData: Community
@@ -16,10 +19,18 @@ type CommunityPageProps = {
 
 const CommunityPage: React.FC<CommunityPageProps> = ({ communityData }) => {
     console.log('here is data', communityData)
+    const setCommunityStateValue = useSetRecoilState(communityState)
 
     if (!communityData) {
         return <NotFound />
     }
+
+    useEffect(() => {
+        setCommunityStateValue((prev) => ({
+            ...prev,
+            currentCommunity: communityData,
+        }))
+    }, [])
 
     return (
         <>
@@ -33,7 +44,7 @@ const CommunityPage: React.FC<CommunityPageProps> = ({ communityData }) => {
                     <Posts communityData={communityData} />
                 </>
                 <>
-                    <div>RHS</div>
+                    <About communityData={communityData} />
                 </>
             </PageContent>
         </>
