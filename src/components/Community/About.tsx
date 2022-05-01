@@ -12,7 +12,7 @@ import {
 import moment from 'moment'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { HiOutlineDotsHorizontal } from 'react-icons/hi'
 import { RiCakeLine } from 'react-icons/ri'

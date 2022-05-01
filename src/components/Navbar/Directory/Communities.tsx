@@ -1,5 +1,5 @@
 import { Box, Flex, Icon, MenuItem, Text } from '@chakra-ui/react'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import CreateCommunityModal from '../../Modal/CreateCommunity/CreateCommunityModal'
 import { GrAdd } from 'react-icons/gr'
 import { useRecoilValue } from 'recoil'

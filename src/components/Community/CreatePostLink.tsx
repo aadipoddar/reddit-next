@@ -1,6 +1,5 @@
 import { Flex, Icon, Input } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
-import React from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { BsLink45Deg } from 'react-icons/bs'
 import { FaReddit } from 'react-icons/fa'
