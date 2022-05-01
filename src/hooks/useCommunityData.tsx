@@ -5,7 +5,7 @@ import {
     increment,
     writeBatch,
 } from 'firebase/firestore'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { useRecoilState, useSetRecoilState } from 'recoil'
 import { authModalState } from '../atoms/authModalAtom'
@@ -17,7 +17,7 @@ import {
 import { auth, firestore } from '../firebase/clientApp'
 
 const useCommunityData = () => {
-    const [user] = useAuthState(auth)
+    const [user, loadingUser] = useAuthState(auth)
     const [communityStateValue, setCommunityStateValue] =
         useRecoilState(communityState)
     const setAuthModalState = useSetRecoilState(authModalState)
@@ -133,7 +133,13 @@ const useCommunityData = () => {
     }
 
     useEffect(() => {
-        if (!user) return
+        if (!user) {
+            setCommunityStateValue((prev) => ({
+                ...prev,
+                mySnippets: [],
+            }))
+            return
+        }
         getMySnippets()
     }, [user])
 
